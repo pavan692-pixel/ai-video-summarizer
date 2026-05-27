@@ -40,8 +40,8 @@ h1{
 h2{
   background:linear-gradient(
     to right,
-    rgb(65, 53, 53),
-    #161d24
+    rgb(197, 120, 120),
+    #689dd3
   );
 
   -webkit-background-clip:text;

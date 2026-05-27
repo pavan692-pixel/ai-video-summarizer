@@ -1,5 +1,6 @@
 import cv2
 import os
+import shutil
 
 
 FRAME_DIR = "frames"
@@ -12,8 +13,38 @@ os.makedirs(
 
 def extract_frames(
     video_path,
+    video_id,
     interval=3
 ):
+
+    # =====================
+    # UNIQUE VIDEO FOLDER
+    # =====================
+
+    video_frame_dir = (
+        f"{FRAME_DIR}/{video_id}"
+    )
+
+    # =====================
+    # REMOVE OLD FRAMES
+    # =====================
+
+    if os.path.exists(
+        video_frame_dir
+    ):
+
+        shutil.rmtree(
+            video_frame_dir
+        )
+
+    os.makedirs(
+        video_frame_dir,
+        exist_ok=True
+    )
+
+    # =====================
+    # VIDEO CAPTURE
+    # =====================
 
     frame_paths = []
 
@@ -37,6 +68,10 @@ def extract_frames(
 
     saved_count = 0
 
+    # =====================
+    # FRAME EXTRACTION
+    # =====================
+
     while True:
 
         success, frame = cap.read()
@@ -47,7 +82,7 @@ def extract_frames(
         if count % frame_interval == 0:
 
             frame_path = (
-                f"{FRAME_DIR}/"
+                f"{video_frame_dir}/"
                 f"frame_{saved_count}.jpg"
             )
 
@@ -65,5 +100,10 @@ def extract_frames(
         count += 1
 
     cap.release()
+
+    print(
+        f"Extracted "
+        f"{saved_count} frames"
+    )
 
     return frame_paths

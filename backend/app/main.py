@@ -138,7 +138,8 @@ def process_video(
         }
 
         frame_paths = extract_frames(
-            video_path
+            video_path,
+            video_id
         )
 
         # =====================

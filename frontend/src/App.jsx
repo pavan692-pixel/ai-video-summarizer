@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { useDropzone } from "react-dropzone";
 
+import "./App.css";
+
 
 function App() {
 
@@ -22,7 +24,7 @@ function App() {
   const [youtubeUrl, setYoutubeUrl] = useState("");
 
   const BACKEND_URL =
-    "https://supreme-telegram-ww4qp9jrg7qh97gj-8000.app.github.dev";
+    "https://ai-video-summarizer-production-4870.up.railway.app";
 
 
   // =========================
